@@ -1,0 +1,6 @@
+@BaisolTaskManagement_HostAddress = http://localhost:5277
+
+GET {{BaisolTaskManagement_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
