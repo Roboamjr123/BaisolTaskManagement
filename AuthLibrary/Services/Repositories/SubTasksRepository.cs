@@ -38,7 +38,9 @@ namespace AuthLibrary.Services.Repositories
                 PlannedStartDate = PlannedStartedDateUtc,
                 PlannedEndDate = PlannedEndDateUtc,
                 ActualStartDate = ActualStartedDateUtc,
-                ActualEndDate = ActualEndDateUtc
+                ActualEndDate = ActualEndDateUtc,
+                duration = subtasksDto.duration,
+                progress = subtasksDto.progress
             };
 
             await _dataContext.SubTasks.AddAsync(subtask);
@@ -61,7 +63,9 @@ namespace AuthLibrary.Services.Repositories
                 PlannedStartDate = subtask.PlannedStartDate,
                 PlannedEndDate = subtask.PlannedEndDate,
                 ActualStartDate = subtask.ActualStartDate,
-                ActualEndDate = subtask.ActualEndDate
+                ActualEndDate = subtask.ActualEndDate,
+                duration = subtask.duration,
+                progress = subtask.progress
             }).ToList();
 
             return subtaskDto;
@@ -85,7 +89,9 @@ namespace AuthLibrary.Services.Repositories
                 PlannedStartDate = subtask.PlannedStartDate,
                 PlannedEndDate = subtask.PlannedEndDate,
                 ActualStartDate = subtask.ActualStartDate,
-                ActualEndDate = subtask.ActualEndDate
+                ActualEndDate = subtask.ActualEndDate,
+                duration = subtask.duration,
+                progress = subtask.progress
             };
 
             return subtaskDto;
@@ -106,6 +112,8 @@ namespace AuthLibrary.Services.Repositories
             subtask.PlannedEndDate = subtasksDto.PlannedEndDate?.ToUniversalTime();
             subtask.ActualStartDate = subtasksDto.ActualStartDate?.ToUniversalTime();
             subtask.ActualEndDate = subtasksDto.ActualEndDate?.ToUniversalTime();
+            subtask.duration = subtasksDto.duration;
+            subtask.progress = subtasksDto.progress;
 
             _dataContext.SubTasks.Update(subtask);
             return await Save();

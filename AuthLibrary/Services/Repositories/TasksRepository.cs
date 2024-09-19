@@ -41,7 +41,10 @@ namespace AuthLibrary.Services.Repositories
                 PlannedStartDate = PlannedStartDateUtc,
                 PlannedEndDate = PlandedEndDateUtc,
                 ActualStartDate = ActualStartDateUtc,
-                ActualEndDate = ActualEndDateUtc
+                ActualEndDate = ActualEndDateUtc,
+                duration = tasksDto.duration,
+                progress = tasksDto.progress
+               
             };
 
             await _dataContext.Tasks.AddAsync(task);
@@ -63,7 +66,10 @@ namespace AuthLibrary.Services.Repositories
                 PlannedStartDate = task.PlannedStartDate,
                 PlannedEndDate = task.PlannedEndDate,
                 ActualStartDate = task.ActualStartDate,
-                ActualEndDate = task.ActualEndDate
+                ActualEndDate = task.ActualEndDate,
+                duration = task.duration,
+                progress = task.progress
+                
             }).ToList();
 
             return taskDto;
@@ -87,7 +93,9 @@ namespace AuthLibrary.Services.Repositories
                 PlannedStartDate = task.PlannedStartDate,
                 PlannedEndDate = task.PlannedEndDate,
                 ActualStartDate = task.ActualStartDate,
-                ActualEndDate = task.ActualEndDate
+                ActualEndDate = task.ActualEndDate,
+                duration = task.duration,
+                progress = task.progress
             };
 
             return taskDto;
@@ -126,6 +134,8 @@ namespace AuthLibrary.Services.Repositories
             task.PlannedEndDate = PlannedEndDateUtc;
             task.ActualStartDate = ActualStartDateUtc;
             task.ActualEndDate = ActualEndDateUtc;
+            task.duration = tasksDto.duration;
+            task.progress = tasksDto.progress;
 
             _dataContext.Tasks.Update(task);
             return await Save();
