@@ -17,6 +17,8 @@ namespace DataLibrary.Models
         public DateTime? PlannedEndDate { get; set; }
         public DateTime? ActualStartDate { get; set; }
         public DateTime? ActualEndDate { get; set; }
+        public int? duration { get; set; }
+        public int? progress { get; set; } = 0;
         public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
         public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 
